@@ -46,6 +46,11 @@ public class Container extends MaxMinConsumer {
      */
     private final ContainerImage image;
 
+
+    /**
+     * Resource allocation currently assigned to the container.
+     */
+    private ContainerAllocation allocation = null;
     /**
      * Current lifecycle state of the container.
      */
@@ -83,6 +88,44 @@ public class Container extends MaxMinConsumer {
      */
     public State getState() {
         return state;
+    }
+    /**
+     * Returns the resource allocation currently assigned to the container.
+     *
+     * @return current allocation, or null if the container has no allocation
+     */
+    public ContainerAllocation getAllocation() {
+        return allocation;
+    }
+
+    /**
+     * Assigns resources to the container.
+     *
+     * @param newAllocation resource allocation to assign
+     */
+    void setAllocation(final ContainerAllocation newAllocation) {
+        if (newAllocation == null) {
+            throw new IllegalArgumentException(
+                    "Container allocation cannot be null");
+        }
+
+        if (allocation != null) {
+            throw new IllegalStateException(
+                    "Container already has a resource allocation");
+        }
+
+        allocation = newAllocation;
+
+        setPerTickProcessingPower(
+                allocation.getAllocated().getTotalProcessingPower());
+    }
+
+    /**
+     * Releases the resources currently assigned to the container.
+     */
+    void releaseAllocation() {
+        allocation = null;
+        setPerTickProcessingPower(0);
     }
 
     /**
