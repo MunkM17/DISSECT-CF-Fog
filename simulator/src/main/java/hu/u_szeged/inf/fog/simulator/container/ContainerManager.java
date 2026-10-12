@@ -1,4 +1,4 @@
-package hu.mta.sztaki.lpds.cloud.simulator.iaas.container;
+package hu.u_szeged.inf.fog.simulator.container;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,8 +1,9 @@
-package hu.mta.sztaki.lpds.cloud.simulator.iaas.container;
+package hu.u_szeged.inf.fog.simulator.test.container;
 
 import hu.mta.sztaki.lpds.cloud.simulator.iaas.VirtualMachine;
 import hu.mta.sztaki.lpds.cloud.simulator.iaas.constraints.ConstantConstraints;
 import hu.mta.sztaki.lpds.cloud.simulator.io.VirtualAppliance;
+import hu.u_szeged.inf.fog.simulator.container.ContainerAllocation;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
